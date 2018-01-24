@@ -1,18 +1,20 @@
 const initialState = {
   points: 0,
+  lastScore: 0,
 }
 
 function score(state = initialState, action) {
   switch (action.type) {
     case 'POST_IMAGE_SUCCESS':
-      var score = state.points;
+      var lastScore = 0;
       if (action.result.what === 'hotdog') {
-        score = score + 500;
+        lastScore = Math.floor(Math.random() * 100000);
       } else {
-        score = score - 50;
+        lastScore = Math.floor(Math.random() * -15000);
       }
       return Object.assign({}, state, {
-        points: score,
+        points: state.points + lastScore,
+        lastScore: lastScore,
       });
     default:
       return state;
