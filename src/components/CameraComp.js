@@ -83,7 +83,9 @@ export class CameraComp extends Component {
             </Camera>
           </TouchableOpacity>
 
-          <Button onPress={() => this.toggleZoom() } title='Zoom' />
+          <TouchableOpacity style={ styles.button } onPress={() => this.toggleZoom()}>
+            { this.state.fontLoaded && <Text style={ styles.buttonText }>Zoom</Text> }
+          </TouchableOpacity>
 
           <View style={ styles.instructions }>
             { this.state.fontLoaded && <Text style={ styles.instructionsText }>Tap those crosshairs!</Text> }
@@ -138,6 +140,16 @@ const styles = StyleSheet.create({
   instructionsText: {
     fontFamily: 'Frontman',
     fontSize: 18,
+    color: 'pink',
+  },
+  button: {
+    margin: 15,
+    padding: 10,
+    backgroundColor: 'purple',
+  },
+  buttonText: {
+    fontFamily: 'Frontman',
+    fontSize: 20,
     color: 'pink',
   },
 });

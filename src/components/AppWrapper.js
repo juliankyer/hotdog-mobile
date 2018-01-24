@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Frontman',
     fontSize: 25,
     color: 'pink',
-  }
+  },
 });
 
 const mapStateToProps = (state) => ({
