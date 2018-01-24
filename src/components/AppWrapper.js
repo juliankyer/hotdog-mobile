@@ -41,7 +41,7 @@ export class AppWrapper extends React.Component {
   }
 
   renderLoading() {
-    if (!this.props.loading) {
+    if (this.props.loading) {
       return (
         <Animated.View style={ [styles.resultWrapper, { opacity: this.state.blink}] }>
           {this.state.fontLoaded &&
