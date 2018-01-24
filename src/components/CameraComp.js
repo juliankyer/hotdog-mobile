@@ -68,7 +68,7 @@ export class CameraComp extends Component {
                     ref={ ref => { this.camera = ref; }}
             >
               <View style={{ backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center'}} >
-                <Image source={require('../assets/crosshair.png')} style={{ width: 200, height: 200 }} />
+                <Image source={require('../assets/target.png')} style={{ width: 240, height: 240 }} />
               </View>
             </Camera>
           </TouchableOpacity>
@@ -113,11 +113,12 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     padding: 5,
-    paddingTop: 25,
+    paddingTop: 28,
   },
   instructions: {
     backgroundColor: 'purple',
     padding: 8,
+    paddingBottom: 14,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
