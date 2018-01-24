@@ -9,6 +9,7 @@ export class CameraComp extends Component {
   state = {
     hasCameraPermission: null,
     fontLoaded: false,
+    zoom: 0,
   }
 
   async compnentWillMount() {
@@ -43,6 +44,14 @@ export class CameraComp extends Component {
     }
   }
 
+  toggleZoom() {
+    if (this.state.zoom === 1) {
+      this.setState({zoom: 0})
+    } else {
+      this.setState({zoom: this.state.zoom + 0.5})
+    }
+  }
+
   render() {
     const { hasCameraPermission, displayPhoto } = this.state;
 
@@ -65,6 +74,7 @@ export class CameraComp extends Component {
           <TouchableOpacity onPress={() => this.takePicture()} style={{ borderRadius: 175, overflow: 'hidden',  borderWidth: 2, borderColor: 'purple'  }} >
             <Camera style={ styles.camera }
                     type={ this.state.type }
+                    zoom={ this.state.zoom }
                     ref={ ref => { this.camera = ref; }}
             >
               <View style={{ backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center'}} >
@@ -72,6 +82,8 @@ export class CameraComp extends Component {
               </View>
             </Camera>
           </TouchableOpacity>
+
+          <Button onPress={() => this.toggleZoom() } title='Zoom' />
 
           <View style={ styles.instructions }>
             { this.state.fontLoaded && <Text style={ styles.instructionsText }>Tap those crosshairs!</Text> }
