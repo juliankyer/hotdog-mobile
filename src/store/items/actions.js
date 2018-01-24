@@ -20,7 +20,9 @@ export function postImageFailure(result) {
 
 export function postImage(formData) {
   return function(dispatch) {
-    const apiURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    // const apiURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiURL = 'http://hotdog.local:5000'
+    // const apiURL = 'https://hotdog-server-team07.herokuapp.com';
 
     dispatch(postImageRequest());
     fetch(`${apiURL}/is_hotdog`, {
@@ -36,4 +38,17 @@ export function postImage(formData) {
         dispatch(postImageFailure(error));
       });
   };
+}
+
+export function setImageURI(image) {
+  return {
+    type: 'NEW_URI',
+    image,
+  };
+}
+
+export function resetImage() {
+  return {
+    type: 'RESET_IMAGE',
+  }
 }

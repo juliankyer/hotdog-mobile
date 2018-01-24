@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
-import isHotdog from './items/reducer';
+import isHotdog from './items/hotdogReducer';
+import photoURI from './items/photoReducer';
 
 const reducer = combineReducers({
   isHotdog,
-})
+  photoURI
+});
 
 const middleware = applyMiddleware(thunk)
 
