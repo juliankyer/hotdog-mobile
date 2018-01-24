@@ -59,23 +59,22 @@ export class CameraComp extends Component {
     } else {
       return (
         <View style={[ styles.container, { borderWidth: 1 } ]}>
-          {this.state.fontLoaded && <Text style={ styles.header }>HOTDOG SLAYER</Text> }
-          <TouchableOpacity onPress={() => this.takePicture()} style={{ borderRadius: 175, overflow: 'hidden' }} >
+
+          { this.state.fontLoaded && <Text style={ styles.header }>HOTDOG SLAYER</Text> }
+
+          <TouchableOpacity onPress={() => this.takePicture()} style={{ borderRadius: 175, overflow: 'hidden',  borderWidth: 2, borderColor: 'purple'  }} >
             <Camera style={ styles.camera }
                     type={ this.state.type }
                     ref={ ref => { this.camera = ref; }}
             >
-            <View style={[ styles.container, { backgroundColor: 'transparent' } ]} >
-              <Image source={require('../assets/crosshair.png')} style={{ width: 200, height: 200 }} />
-            </View>
-          </Camera>
-        </TouchableOpacity>
-          <View style={ styles.buttonWrapper }>
-            {/* <Button
-              color='blue'
-              onPress={() => this.takePicture()}
-              title='PEW PEW'
-            /> */}
+              <View style={{ backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center'}} >
+                <Image source={require('../assets/crosshair.png')} style={{ width: 200, height: 200 }} />
+              </View>
+            </Camera>
+          </TouchableOpacity>
+
+          <View style={ styles.instructions }>
+            { this.state.fontLoaded && <Text style={ styles.instructionsText }>Tap those crosshairs!</Text> }
           </View>
         </View>
       );
@@ -86,14 +85,8 @@ export class CameraComp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonWrapper: {
-    marginTop: 50,
-    borderWidth: 1,
-    borderColor: 'blue',
+    justifyContent: 'space-between',
   },
   smallText: {
     fontSize: 18,
@@ -103,6 +96,8 @@ const styles = StyleSheet.create({
     height: 350,
     width: 350,
     borderRadius: 175,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   background: {
     position: 'absolute',
@@ -111,11 +106,27 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 32,
-    backgroundColor: 'transparent',
+    backgroundColor: 'purple',
     marginBottom: 20,
     fontFamily: 'Frontman',
-    color: 'pink'
-  }
+    color: 'pink',
+    width: '100%',
+    textAlign: 'center',
+    padding: 5,
+    paddingTop: 25,
+  },
+  instructions: {
+    backgroundColor: 'purple',
+    padding: 8,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  instructionsText: {
+    fontFamily: 'Frontman',
+    fontSize: 18,
+    color: 'pink',
+  },
 });
 
 const mapStateToProps = (state) => ({

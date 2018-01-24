@@ -98,16 +98,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   smallText: {
     fontSize: 18,
-    color: 'white',
+    color: 'pink',
   },
   preview: {
     width: 350,
     height: 350,
-    marginBottom: 30,
+    borderWidth: 3,
+    borderColor: 'purple',
   },
   background: {
     position: 'absolute',
@@ -119,6 +120,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Frontman',
     backgroundColor: 'transparent',
     fontSize: 18,
+    color: 'pink',
   },
   resultWrapper: {
     backgroundColor: 'purple',
@@ -126,15 +128,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 30,
-    padding: 7,
+    paddingTop: 30,
+    paddingBottom: 7,
   },
   button: {
+    margin: 15,
     padding: 10,
-    backgroundColor: 'red',
+    backgroundColor: 'purple',
   },
   buttonText: {
     fontFamily: 'Frontman',
-    fontSize: 30,
+    fontSize: 25,
+    color: 'pink',
   }
 });
 
