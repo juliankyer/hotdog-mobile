@@ -10,7 +10,7 @@ function score(state = initialState, action) {
       if (action.result.what === 'hotdog') {
         lastScore = Math.floor(Math.random() * 150);
       } else {
-        lastScore = Math.floor(Math.random() * -150);
+        lastScore = Math.floor(Math.random() * -15);
       }
       return Object.assign({}, state, {
         points: state.points + lastScore,
