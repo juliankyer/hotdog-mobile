@@ -78,7 +78,8 @@ export class AppWrapper extends React.Component {
             <Text style={ styles.buttonText } onPress={() => this.goHome()}>Respawn</Text>
           </TouchableOpacity>
 
-          <Text>{this.props.score}</Text>
+          <Text>Shot score: {this.props.lastScore}</Text>
+          <Text>Total score: {this.props.score}</Text>
 
         </View>
       );
@@ -150,6 +151,7 @@ const mapStateToProps = (state) => ({
   model: state.isHotdog.model,
   image: state.photoURI.image,
   score: state.score.points,
+  lastScore: state.score.lastScore,
 });
 
 const mapDispatchToProps = (dispatch) => ({
