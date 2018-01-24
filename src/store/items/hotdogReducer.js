@@ -4,7 +4,6 @@ const initialState = {
 };
 
 function isHotdog(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case 'POST_IMAGE_REQUEST':
       return Object.assign({}, state, {
