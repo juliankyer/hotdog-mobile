@@ -20,6 +20,7 @@ export class CameraComp extends Component {
   async componentDidMount() {
     await Font.loadAsync({
       'Frontman': require('../assets/fonts/Frontman.ttf'),
+      'Capella': require('../assets/fonts/Capella.ttf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -69,7 +70,14 @@ export class CameraComp extends Component {
       return (
         <View style={[ styles.container, { borderWidth: 1 } ]}>
 
-          { this.state.fontLoaded && <Text style={ styles.header }>HOTDOG SLAYER</Text> }
+          { this.state.fontLoaded &&
+            <View style={ styles.headerWrapper }>
+            <Text style={ styles.header }>HOTDOG SLAYER</Text>
+            <View style={ styles.scoreBox }>
+              <Text style={ styles.totalScore }>Total score: </Text>
+              <Text style={ styles.totalNum }>{ this.props.score }</Text>
+            </View>
+          </View>}
 
           <TouchableOpacity onPress={() => this.takePicture()} style={{ borderRadius: 175, overflow: 'hidden',  borderWidth: 2, borderColor: 'purple'  }} >
             <Camera style={ styles.camera }
@@ -121,13 +129,19 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 32,
     backgroundColor: 'purple',
-    marginBottom: 20,
+    marginBottom: 0,
     fontFamily: 'Frontman',
     color: 'pink',
     width: '100%',
     textAlign: 'center',
     padding: 5,
     paddingTop: 28,
+  },
+  headerWrapper: {
+    width: '100%',
+    marginTop: 0,
+    marginBottom: 60,
+    height: 65,
   },
   instructions: {
     backgroundColor: 'purple',
@@ -152,10 +166,27 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'pink',
   },
+  totalScore: {
+    padding: 10,
+    fontFamily: 'Frontman',
+    color: 'pink',
+  },
+  totalNum: {
+    fontFamily: 'Capella',
+    color: 'pink',
+    fontSize: 40,
+  },
+  scoreBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'purple',
+  },
 });
 
 const mapStateToProps = (state) => ({
   uri: state.photoURI.uri,
+  score: state.score.points,
 });
 
 const mapDispatchToProps = (dispatch) => ({

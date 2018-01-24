@@ -8,9 +8,9 @@ function score(state = initialState, action) {
     case 'POST_IMAGE_SUCCESS':
       var lastScore = 0;
       if (action.result.what === 'hotdog') {
-        lastScore = Math.floor(Math.random() * 100000);
+        lastScore = Math.floor(Math.random() * 150);
       } else {
-        lastScore = Math.floor(Math.random() * -15000);
+        lastScore = Math.floor(Math.random() * -150);
       }
       return Object.assign({}, state, {
         points: state.points + lastScore,

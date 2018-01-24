@@ -15,6 +15,7 @@ export class AppWrapper extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'Frontman': require('../assets/fonts/Frontman.ttf'),
+      'Capella': require('../assets/fonts/Capella.ttf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -53,6 +54,10 @@ export class AppWrapper extends React.Component {
         <View style={styles.resultWrapper }>
           {this.props.model && this.state.fontLoaded &&
             <Text style={ styles.result }>{this.renderResult(this.props.model.what)}</Text>}
+            <View style={ styles.scoreBox }>
+              <Text style={ styles.shotScore }>Shot score: </Text>
+              <Text style={ styles.shotNum }>{this.props.lastScore}</Text>
+            </View>
         </View>
       )
     }
@@ -66,9 +71,8 @@ export class AppWrapper extends React.Component {
         <View style={ styles.container }>
 
           <Image source={require('../assets/snoop-dooog.jpg')}
-                 resizeMode="repeat"
-                 style={ styles.background }
-          />
+                 resizeMode='repeat'
+                 style={ styles.background } />
 
           { this.renderLoading() }
 
@@ -77,9 +81,6 @@ export class AppWrapper extends React.Component {
           <TouchableOpacity style={ styles.button }>
             <Text style={ styles.buttonText } onPress={() => this.goHome()}>Respawn</Text>
           </TouchableOpacity>
-
-          <Text>Shot score: {this.props.lastScore}</Text>
-          <Text>Total score: {this.props.score}</Text>
 
         </View>
       );
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     paddingTop: 30,
     paddingBottom: 7,
+    height: 135,
   },
   button: {
     margin: 15,
@@ -143,6 +145,22 @@ const styles = StyleSheet.create({
     fontFamily: 'Frontman',
     fontSize: 25,
     color: 'pink',
+  },
+  shotScore: {
+    padding: 10,
+    fontFamily: 'Frontman',
+    color: 'pink',
+  },
+  shotNum: {
+    fontFamily: 'Capella',
+    color: 'pink',
+    fontSize: 40,
+  },
+  scoreBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'purple',
   },
 });
 
