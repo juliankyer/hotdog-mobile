@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Button, Animated } fro
 import { Camera, Permissions, Font } from 'expo';
 
 import CameraComp from './CameraComp';
-import {resetImage} from '../store/items/actions';
+import { resetImage, addPoints, subtractPoints } from '../store/items/actions';
 
 export class AppWrapper extends React.Component {
   state = {
@@ -78,6 +78,8 @@ export class AppWrapper extends React.Component {
             <Text style={ styles.buttonText } onPress={() => this.goHome()}>Respawn</Text>
           </TouchableOpacity>
 
+          <Text>{this.props.score}</Text>
+
         </View>
       );
     } else {
@@ -147,6 +149,7 @@ const mapStateToProps = (state) => ({
   loading: state.isHotdog.loading,
   model: state.isHotdog.model,
   image: state.photoURI.image,
+  score: state.score.points,
 });
 
 const mapDispatchToProps = (dispatch) => ({

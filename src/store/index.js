@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
 import isHotdog from './items/hotdogReducer';
+import score from './items/scoreReducer';
 import photoURI from './items/photoReducer';
 
 const reducer = combineReducers({
   isHotdog,
-  photoURI
+  score,
+  photoURI,
 });
 
 const middleware = applyMiddleware(thunk)
